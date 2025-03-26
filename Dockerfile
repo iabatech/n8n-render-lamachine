@@ -1,10 +1,7 @@
 FROM n8nio/n8n:latest
 
-# Créer un dossier où on a les droits d’écriture
-RUN mkdir -p /data/custom_modules
+# Installer les dépendances dans un dossier accessible
+RUN npm install --prefix /home/node/custom_modules cheerio axios htmlparser2
 
-# Installer les packages dans ce dossier
-RUN npm install --prefix /data/custom_modules cheerio axios htmlparser2
-
-# Ajouter ce dossier au chemin des modules Node.js
-ENV NODE_PATH=/data/custom_modules/lib/node_modules
+# Définir le chemin des modules à inclure
+ENV NODE_PATH=/home/node/custom_modules/lib/node_modules
