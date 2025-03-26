@@ -5,3 +5,6 @@ RUN npm install --prefix /home/node/custom_modules cheerio axios htmlparser2
 
 # Définir le chemin des modules à inclure
 ENV NODE_PATH=/home/node/custom_modules/lib/node_modules
+
+RUN mkdir -p /home/node/scripts
+COPY parse-cheerio.js /home/node/scripts/parse-cheerio.js
